@@ -1,47 +1,72 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import TextField from '@material-ui/core/TextField';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-const styles = {
-  root: {
-    flexGrow: 1
-  },
-  grow: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20
-  }
-};
+// @actions
+import { filterBy } from '../../redux/actions';
 
-const Appbar = props => {
-  const { classes } = props;
+import './styles.scss';
+
+const Appbar = ({ filterBy, filters: { age, name, salary } }) => {
+  const handleTextfield = state => event => {
+    const newFilterInfo = {
+      name: state,
+      value: event.target.value
+    };
+
+    filterBy(newFilterInfo);
+  };
+
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <IconButton
-          className={classes.menuButton}
-          color="inherit"
-          aria-label="Menu"
-        >
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="h6" color="inherit" className={classes.grow}>
-          Arkix Test
-        </Typography>
-      </Toolbar>
-    </AppBar>
+    <div className="custom-header">
+      <div className="custom-header__title">Arkix Test</div>
+      <div className="custom-header__filters">
+        <div className="custom-header__name">
+          <TextField
+            className="textfield textfield-name"
+            id="name"
+            label="Name"
+            onChange={handleTextfield('name')}
+            value={name}
+          />
+        </div>
+        <div className="custom-header__salary">
+          <TextField
+            className="textfield textfield-salary"
+            id="salary"
+            label="Salary"
+            onChange={handleTextfield('salary')}
+            value={salary}
+          />
+        </div>
+        <div className="custom-header__age">
+          <TextField
+            className="textfield textfield-age"
+            id="age"
+            label="Age"
+            onChange={handleTextfield('age')}
+            value={age}
+          />
+        </div>
+      </div>
+    </div>
   );
 };
 
-Appbar.propTypes = {
-  classes: PropTypes.object.isRequired
-};
+const mapStateToProps = filters => ({
+  filters
+});
 
-export default withStyles(styles)(Appbar);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      filterBy
+    },
+    dispatch
+  );
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Appbar);

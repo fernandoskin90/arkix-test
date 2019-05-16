@@ -1,0 +1,34 @@
+.custom-header {
+    background-color: #8d8d8d;
+    display: flex;
+    height: 64px;
+    justify-content: space-between;
+    padding: 0 20px;
+
+    &__title {
+        align-items: center;
+        display: flex;
+        font-size: 1.4rem;
+        font-weight: bold;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    &__filters {
+        align-items: center;
+        display: flex;
+    }
+
+    &__name, &__salary, &__age {
+        height: 100%;
+        margin: 0 15px;
+    }
+
+    .textfield {
+        height: 100%;
+    }
+    
+    &__name {}
+    &__salary {}
+    &__age {}
+}

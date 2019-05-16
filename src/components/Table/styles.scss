@@ -1,0 +1,11 @@
+.exployees {
+    height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.app__loader {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+}
