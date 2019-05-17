@@ -8,6 +8,10 @@ En el directorio del proyecto, se debe ejecutar:
 
 ### `npm install`
 
+### Repositorio
+
+Test[Arkix-Test](https://github.com/nando77/arkix-test)
+
 ## Scripts Disponibles
 
 En el directorio del proyecto, puede ejecutar:
