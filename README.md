@@ -10,7 +10,7 @@ En el directorio del proyecto, se debe ejecutar:
 
 ### Repositorio
 
-Test[Arkix-Test](https://github.com/nando77/arkix-test)
+URL [Arkix-Test](https://github.com/nando77/arkix-test)
 
 ## Scripts Disponibles
 
